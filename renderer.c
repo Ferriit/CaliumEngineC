@@ -654,7 +654,7 @@ int main(int argc, char** argv) {
     glutInitWindowSize(800, 600);
 
     // Create a window with a name
-    glutCreateWindow("Test Window");
+    glutCreateWindow("Calium Window");
 
     // Call the INIT function
     init();
