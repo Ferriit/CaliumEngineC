@@ -28,7 +28,7 @@ int HEIGHT = 600;
 float FOV = 45.0f;
 
 int OBJECTAMOUNT = 2;
-int LIGHTAMOUNT = 1;
+int LIGHTAMOUNT = 2;
 
 // Texture ID
 GLuint* TextureIDs = NULL;
@@ -517,9 +517,16 @@ void display(void) {
         .rx = angle + 45.0f, .ry = angle + 45.0f, .rz = 0.0f // Rotate around X and Y axes
     };
 
+    struct Transform Transformation3 = {
+        .px = 0.0f, .py = 0.0f, .pz = 0.0f,
+        .sx = 1.0f, .sy = 1.0f, .sz = 1.0f,
+        .rx = angle + 22.5f, .ry = angle + 22.5f, .rz = 0.0f // Rotate around X and Y axes
+    };
+
     // Draw the cube with the updated transformation
     DrawMesh(objectptr[0], Transformation1, TextureIDs[0], lightptr, LIGHTAMOUNT, false);
     DrawMesh(objectptr[1], Transformation2, TextureIDs[0], lightptr, LIGHTAMOUNT, false);
+    DrawMesh(objectptr[1], Transformation3, TextureIDs[0], lightptr, LIGHTAMOUNT, false);
 
     // Swap buffers to display the rendered frame
     glutSwapBuffers();
@@ -651,10 +658,10 @@ int main(int argc, char** argv) {
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 
     // Set up the window size
-    glutInitWindowSize(800, 600);
+    glutInitWindowSize(WIDTH, HEIGHT);
 
     // Create a window with a name
-    glutCreateWindow("Calium Window");
+    glutCreateWindow("Test Window");
 
     // Call the INIT function
     init();
